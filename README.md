@@ -6,6 +6,12 @@ They want to create a Postgres database with tables designed to optimize queries
 # Data Source
 There are 2 datasets, both sourced from the [Million Song Dataset](http://millionsongdataset.com/). Only a subset of the original data has been used for this project. The songs dataset has 71 files and the logs dataset has 30 files.
 
+#### Song Data
+![song file sample](images/song_data.jpg)
+
+#### Log Data
+![log file sample][(images/log_data.jpg)
+
 # Database Schema
 A star schema design was developed, with the songplay table as fact table.
 #### Songplay table (fact)
