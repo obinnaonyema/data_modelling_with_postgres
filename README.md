@@ -8,38 +8,38 @@ There are 2 datasets, both sourced from the [Million Song Dataset](http://millio
 
 # Database Schema
 A star schema design was developed, with the songplay table as fact table.
-#### Songplay table
+#### Songplay table (fact)
 * songplay_id serial primary key
 * start_time timestamp not null
 * user_id int not null
 * song_id varchar
-* artist_id varcha
+* artist_id varchar
 * session_id int
 * location varchar
 * user_agent text
 
-#### Songs table
+#### Songs table (dimension)
 * song_id varchar primary key
 * title varchar not null
 * artist_id varchar
 * year int
 * duration decimal not null
 
-#### Users table
+#### Users table (dimension)
 * user_id int primary key
 * first_name varchar
 * last_name varchar
 * gender varchar
 * level varchar
 
-#### Artists table
+#### Artists table (dimension)
 * artist_id varchar primary key
 * name varchar not null
 * location varchar
 * latitude double precision not null 
 * longitude double precision not null
 
-#### Time table
+#### Time table (dimension)
 * start_time time 
 * hour int
 * day int
