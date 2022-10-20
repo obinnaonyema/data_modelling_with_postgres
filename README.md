@@ -5,4 +5,14 @@ They want to create a Postgres database with tables designed to optimize queries
 
 # Data Source
 There are 2 datasets, both sourced from the [Million Song Dataset](http://millionsongdataset.com/). Only a subset of the original data has been used for this project. The songs dataset has 71 files and the logs dataset has 30 files.
-Set songplay_id to serial type so that it auto increments with every insert
+
+# Running the Scripts
+
+`create_tables.py` is used to delete and recreate the database and tables. This is useful for making modifications on a global scale.
+`etl.py` will run the etl pipeline to fetch all files, transform and load into the database tables created with `create_tables.py`.
+`sql_queries.py` contains SQL queries used in the etl pipeline as well as for validation.
+`etl.ipynb` is a development workbook used to create and verify the etl pipeline on a smaller scale.
+`test.ipynb` is used to verify final run of the etl. Sanity checks here assess constraints and data types.
+
+# Error Handling
+In the songplay table, I set songplay_id to serial type so that it auto increments with every insert. However, for other tables, I used the postgres upsert consert to avoid failure if a record already exists during insert. The clause `on conflict [column] do nothing` was added to handle this.
