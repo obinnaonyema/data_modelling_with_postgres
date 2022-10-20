@@ -6,6 +6,48 @@ They want to create a Postgres database with tables designed to optimize queries
 # Data Source
 There are 2 datasets, both sourced from the [Million Song Dataset](http://millionsongdataset.com/). Only a subset of the original data has been used for this project. The songs dataset has 71 files and the logs dataset has 30 files.
 
+# Database Schema
+A star schema design was developed, with the songplay table as fact table.
+#### Songplay table
+* songplay_id serial primary key
+* start_time timestamp not null
+* user_id int not null
+* song_id varchar
+* artist_id varcha
+* session_id int
+* location varchar
+* user_agent text
+
+#### Songs table
+* song_id varchar primary key
+* title varchar not null
+* artist_id varchar
+* year int
+* duration decimal not null
+
+#### Users table
+* user_id int primary key
+* first_name varchar
+* last_name varchar
+* gender varchar
+* level varchar
+
+#### Artists table
+* artist_id varchar primary key
+* name varchar not null
+* location varchar
+* latitude double precision not null 
+* longitude double precision not null
+
+#### Time table
+* start_time time 
+* hour int
+* day int
+* week int
+* month int
+* year int
+* weekday int
+
 # Running the Scripts
 
 `create_tables.py` is used to delete and recreate the database and tables. This is useful for making modifications on a global scale.
