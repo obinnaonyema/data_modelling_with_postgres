@@ -65,4 +65,5 @@ A star schema design was developed, with the songplay table as fact table.
 # Error Handling
 In the songplay table, I set songplay_id to serial type so that it auto increments with every insert. However, for other tables apart from user table, I used the postgres upsert command to avoid failure if a record already exists during insert. The clause `on conflict [column] do nothing` was added to handle this.
 
-In the user table, there's a possibility that a user level may change between free and paid. Where there's an insert conflict, I have handled it using `on conflict(level) do update set level=EXCLUDED.level`
+In the user table, there's a possibility that a user level may change between free and paid. Where there's an insert conflict, I have handled it using 
+```on conflict(level) do update set level=EXCLUDED.level```
